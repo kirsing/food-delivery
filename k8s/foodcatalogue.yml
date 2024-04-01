@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foodcatalogueapp
+  labels:
+    app: foodcatalogueapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: foodcatalogueapp
+  template:
+    metadata:
+      labels:
+        app: foodcatalogueapp
+    spec:
+      containers:
+        - name: foodcatalogueapp
+          image: kirsing123/food-catalogue-service:v1.1
+          ports:
+            - containerPort: 9092
+          env:
+            - name: SPRING_APPLICATION_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap
+                  key: FOOD_CATALOGUE_APPLICATION_NAME
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: secret
+                  key: postgresql-username
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: secret
+                  key: postgresql-password
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap
+                  key: foodcataloguedb_url
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap
+                  key: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: foodcatalogueapp
+spec:
+  selector:
+    app: foodcatalogueapp
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 9000
+      targetPort: 9000
