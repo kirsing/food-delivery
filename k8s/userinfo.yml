@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: userinfo-deployment
+  labels:
+    app: userinfo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: userinfo
+  template:
+    metadata:
+      labels:
+        app: userinfo
+    spec:
+      containers:
+        - name: userinfo
+          image: kirsing123/userinfo:v1.0.1
+          ports:
+            - containerPort: 9093
+          env:
+            - name: SPRING_APPLICATION_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: delivery-configmap
+                  key: USERS_APPLICATION_NAME
+            - name: SPRING_CONFIG_IMPORT
+              valueFrom:
+                configMapKeyRef:
+                  name: delivery-configmap
+                  key: SPRING_CONFIG_IMPORT
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: secret
+                  key: postgresql-username
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: secret
+                  key: postgresql-password
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: delivery-configmap
+                  key: usersdb_url
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+              valueFrom:
+                configMapKeyRef:
+                  name: delivery-configmap
+                  key: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: userinfo
+spec:
+  selector:
+    app: userinfo
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 9093
+      targetPort: 9093

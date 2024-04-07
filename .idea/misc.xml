@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/config" />
+    <file type="web" url="file://$PROJECT_DIR$/configserver" />
     <file type="web" url="file://$PROJECT_DIR$/edgeserver" />
     <file type="web" url="file://$PROJECT_DIR$/eureka" />
+    <file type="web" url="file://$PROJECT_DIR$/eurekaserver" />
     <file type="web" url="file://$PROJECT_DIR$/food-catalogue-microservice" />
+    <file type="web" url="file://$PROJECT_DIR$/orders" />
+    <file type="web" url="file://$PROJECT_DIR$/restaurants" />
+    <file type="web" url="file://$PROJECT_DIR$/userinfo" />
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="openjdk-21" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />

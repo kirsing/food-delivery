@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: delivery-configmap
+data:
+  SPRING_CONFIG_IMPORT: "configserver:http://configserver:8071/"
+  EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://eurekaserver:8070/eureka/"
+  CONFIGSERVER_APPLICATION_NAME: configserver
+  EUREKA_APPLICATION_NAME: eurekaserver
+  FOOD_CATALOGUE_APPLICATION_NAME: foodcatalogue
+  RESTAURANTS_APPLICATION_NAME: restaurants
+  ORDERS_APPLICATION_NAME: orders
+  USERS_APPLICATION_NAME: userinfo
+  EDGE_APPLICATION_NAME: edgeserver
+  foodcataloguedb_url: jdbc:postgresql://35.228.167.123:5432/foodcataloguedb
+  restaurantdb_url: jdbc:postgresql://35.228.167.123:5432/restaurantdb
+  orderdb_url: mongodb+srv://admin:219528Kirsing@atlas-cluster.st0oaiy.mongodb.net/
+  usersdb_url: jdbc:postgresql://35.228.167.123:5432/userdb

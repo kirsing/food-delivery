@@ -16,19 +16,24 @@ spec:
     spec:
       containers:
         - name: edgeserver
-          image: kirsing123/edgeserver:v1.0
+          image: kirsing123/edgeserver:v1.0.2
           ports:
             - containerPort: 8072
           env:
             - name: SPRING_APPLICATION_NAME
               valueFrom:
                 configMapKeyRef:
-                  name: configmap
-                  key: GATEWAY_APPLICATION_NAME
+                  name: delivery-configmap
+                  key: EDGE_APPLICATION_NAME
+            - name: SPRING_CONFIG_IMPORT
+              valueFrom:
+                configMapKeyRef:
+                  name: delivery-configmap
+                  key: SPRING_CONFIG_IMPORT
             - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
               valueFrom:
                 configMapKeyRef:
-                  name: configmap
+                  name: delivery-configmap
                   key: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
 ---
 apiVersion: v1

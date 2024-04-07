@@ -4,6 +4,15 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/config" />
+        <option name="gradleJvm" value="corretto-18" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/config" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/edgeserver" />
         <option name="gradleJvm" value="corretto-18" />
         <option name="modules">
@@ -13,11 +22,11 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/eureka" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/eurekaserver" />
         <option name="gradleJvm" value="corretto-18" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/eureka" />
+            <option value="$PROJECT_DIR$/eurekaserver" />
           </set>
         </option>
       </GradleProjectSettings>
@@ -27,6 +36,33 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/food-catalogue-microservice" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/orders" />
+        <option name="gradleJvm" value="corretto-18" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/orders" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/restaurants" />
+        <option name="gradleJvm" value="corretto-18" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/restaurants" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/userinfo" />
+        <option name="gradleJvm" value="corretto-18" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/userinfo" />
           </set>
         </option>
       </GradleProjectSettings>

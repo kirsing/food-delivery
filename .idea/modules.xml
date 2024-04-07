@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/food-catalogue-microservice.main.iml" filepath="$PROJECT_DIR$/.idea/modules/food-catalogue-microservice.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/food-delivery.iml" filepath="$PROJECT_DIR$/.idea/food-delivery.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/orders.main.iml" filepath="$PROJECT_DIR$/.idea/modules/orders.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/restaurants.main.iml" filepath="$PROJECT_DIR$/.idea/modules/restaurants.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/userinfo.main.iml" filepath="$PROJECT_DIR$/.idea/modules/userinfo.main.iml" />
     </modules>
   </component>
 </project>

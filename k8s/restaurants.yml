@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: restaurants-deployment
+  labels:
+    app: restaurants
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: restaurants
+  template:
+    metadata:
+      labels:
+        app: restaurants
+    spec:
+      containers:
+        - name: restaurants
+          image: kirsing123/restaurants:v1.1
+          ports:
+            - containerPort: 9091
+          env:
+            - name: SPRING_APPLICATION_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: delivery-configmap
+                  key: RESTAURANTS_APPLICATION_NAME
+            - name: SPRING_CONFIG_IMPORT
+              valueFrom:
+                configMapKeyRef:
+                  name: delivery-configmap
+                  key: SPRING_CONFIG_IMPORT
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: secret
+                  key: postgresql-username
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: secret
+                  key: postgresql-password
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: delivery-configmap
+                  key: restaurantdb_url
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+              valueFrom:
+                configMapKeyRef:
+                  name: delivery-configmap
+                  key: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: restaurants
+spec:
+  selector:
+    app: restaurants
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 9091
+      targetPort: 9091
